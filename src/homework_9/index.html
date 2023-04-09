@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //1. Вивести на сторінку в один рядок через кому числа від 10 до 20.
+      let task1Result = ``;
+      for (let i = 10; i <= 20; i++) {
+        task1Result += i === 20 ? `${i}.` : `${i}, `;
+      }
+      console.log('task1: ',task1Result);
+
+      //2. Вивести квадрати чисел від 10 до 20.
+      let task2Result = "";
+      for (let i = 10; i <= 20; i++) {
+        let squaredNumber = Math.pow(i, 2);
+        task2Result += i === 20 ? `${squaredNumber}.` : `${squaredNumber}, `;
+      }
+      console.log('task2: ',task2Result);
+
+      //3.Вивести таблицю множення на 7.
+      let task3Result = ``;
+      for (let i = 1; i <= 10; i++) {
+        let number = 7;
+        task3Result += `
+        ${number} * ${i} = ${number * i}`;
+      }
+      console.log('task3: ',task3Result);
+
+      //4.Знайти суму всіх цілих чисел від 1 до 15.
+      let task4Result = 1;
+      for (let i = 2; i <= 15; i++) {
+        task4Result += i;
+      }
+      console.log('task4: ',task4Result);
+
+      //5.Знайти добуток усіх цілих чисел від 15 до 35.
+      let task5Result = 15;
+      for (let i = 16; i <= 35; i++) {
+        task5Result *= i;
+      }
+      console.log('task5: ',task5Result);
+
+      //6.Знайти середнє арифметичне всіх цілих чисел від 1 до 500.
+      let sum = 0;
+      for (let i = 1; i <= 500; i++) {
+        sum += i;
+      }
+      let task6Result = sum / 500;
+      console.log('task6: ',task6Result);
+
+      //7.Вивести суму лише парних чисел в діапазоні від 30 до 80.
+      let task7Result = 0;
+      for (let i = 30; i <= 80; i++) {
+        if (i % 2 === 0) {
+          task7Result += i;
+        }
+      }
+      console.log('task7: ',task7Result);
+
+      //8.Вивести всі числа в діапазоні від 100 до 200 кратні 3.
+      let task8Result = "";
+      for (let i = 100; i <= 200; i++) {
+        if (i % 3 === 0) {
+          task8Result += `${i}, `;
+        }
+      }
+      console.log('task8: ',task8Result);
+
+      //9.Дано натуральне число. Знайти та вивести на сторінку всі його дільники.
+      //10.Визначити кількість його парних дільників.
+      //11.Знайти суму його парних дільників.
+      let randomNumber = Math.floor(Math.random() * 100);
+      console.log('number for tasks 9-11', randomNumber);
+      let task9Result = "";
+      let task10Result = 0;
+      let task11Result = 0;
+      for (let i = 1; i <= randomNumber; i++) {
+        if (randomNumber % i === 0) {
+          task9Result += `${i}, `;
+          if (i % 2 === 0) {
+            task10Result++;
+            task11Result += i;
+          }
+        }
+      }
+      console.log('task9: ',task9Result);
+      console.log('task10: ',task10Result);
+      console.log('task11: ',task11Result);
+
+      //12.Надрукувати повну таблицю множення від 1 до 10.
+      let task12Result = '';
+      for (let i = 1; i <= 10; i++) {
+        for (let j = 1; j <= 10; j++) {
+          task12Result += `
+          ${i} * ${j} = ${i * j}`;
+        }
+      }
+      console.log('task12: ',task12Result);
+    </script>
+  </body>
+</html>
