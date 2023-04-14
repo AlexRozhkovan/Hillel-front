@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const array = [
+        16, -37, 54, -4, 72, -56, 47, 4, -16, 25, -37, 46, 4, -51, 27, -63, 4,
+        -54, 76, -4, 12, -35, 4, 47,
+      ];
+      let sumPositive = 0;
+      let countPositive = 0;
+      let minElement = array[0];
+      let minIndex = 0;
+      let maxElement = array[0];
+      let maxIndex = 0;
+      let countNegative = 0;
+      let sumEvenPositive = 0;
+      let countEvenPositive = 0;
+      let sumOddsPositive = 0;
+      let countOddsPositive = 0;
+      let productOfPositive = 1;
+
+      for (let i = 0; i < array.length; i++) {
+        if (array[i] > 0) {
+          sumPositive += array[i];
+          countPositive++;
+          productOfPositive *= array[i];
+          if (array[i] % 2) {
+            sumOddsPositive += array[i];
+            countOddsPositive++;
+          } else {
+            sumEvenPositive += array[i];
+            countEvenPositive++;
+          }
+        } else {
+          countNegative++;
+        }
+        if (array[i] < minElement) {
+          minElement = array[i];
+          minIndex = i;
+        }
+        if (array[i] > maxElement) {
+          maxElement = array[i];
+          maxIndex = i;
+        }
+      }
+      for (let i = 0; i < array.length; i++) {
+        if (array[i] !== maxElement) {
+          array[i] = 0;
+        }
+      }
+      console.log(`
+      Сума позитивних елементів: ${sumPositive}
+      Кількість позитивних елементів: ${countPositive}
+      Мінімальний елемент: ${minElement}
+      Порядковий номер мінімального елемента: ${minIndex}
+      Максимальний елемент: ${maxElement}
+      Порядковий номер максимального елемента: ${maxIndex}
+      Кількість негативних елементів: ${countNegative}
+      Сума позитивних парних елементів: ${sumEvenPositive}
+      Кількість позитивних парних елементів: ${countEvenPositive}
+      Сума позитивних непарних елементів: ${sumOddsPositive}
+      Кількість позитивних непарних елементів: ${countOddsPositive}
+      Добуток позитивних елементів: ${productOfPositive}
+      Масив після обнулення: [${array}]`);
+    </script>
+  </body>
+</html>
