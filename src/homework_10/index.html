@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>
+      Створити масив, довжину та елементи якого задає користувач. Відсортувати
+      масив за зростанням. Видалити елементи з масиву з 2 по 4 (включно!).
+      <br />
+      У міру змін виводити вміст масиву на сторінку.
+      <br />
+      (результат див. консоль)
+    </p>
+    <script>
+      let array = [];
+      let arrayLength;
+      do {
+        arrayLength = prompt("Enter array length:");
+      } while (arrayLength <= 0 || isNaN(arrayLength));
+      for (let i = 0; i < arrayLength; i++) {
+        let arrayElement = null;
+        do {
+        arrayElement  = prompt(`Enter ${i}  element`);
+      } while (isNaN(arrayElement));
+        array.push(arrayElement);
+      }
+      document.write("Our array: ", array + "<br>");
+      array.sort((a, b) => a - b);
+      document.write("Sort array: ", array + "<br>");
+      if (array.length > 4) {
+        array.splice(1, 3);
+        document.write("Splice elements 2-4: ", array);
+      }
+    </script>
+  </body>
+</html>
