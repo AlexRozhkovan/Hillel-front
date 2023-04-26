@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let message = "";
+      const birthYear = promptUser("Рік свого народження")
+      const city = promptUser("Місто, де ви живете")
+      const sport = promptUser("Свій улюблений вид спорту")
+
+      getAge(birthYear);
+      getCity(city);
+      getSport(sport);
+      getMessage(message);
+
+      function getCity(city) {
+        if (city) {
+          const countries = {
+            Київ: "України",
+            Вашингтон: "США",
+            Лондон: "Великої Британії",
+          };
+          message += `Ти живеш у ${
+            countries[city] ? "столиці " + countries[city] : "місті " + city
+          }.\n`;
+        }
+      }
+
+      function getAge(birthYear) {
+        if (birthYear) {
+          const currentYear = new Date().getFullYear();
+          const age = currentYear - birthYear;
+          message += `Ваш вік: ${age}\n`;
+        }
+      }
+
+      function getSport(sport) {
+        if (sport) {
+          message += `Ваш улюблений вид спорту - ${sport}\n`;
+          const athletes = {
+            футбол: "Ліонел Мессі",
+            теніс: "Новак Джокович",
+            баскетбол: "Кобі Браянт",
+          };
+          if (athletes[sport]) {
+            message += `Круто! Хочеш стати ${athletes[sport]}?`;
+          }
+        }
+      }
+
+      function promptUser(promptText) {
+        let userInput = prompt(promptText);
+        if (!userInput) {
+          alert(`Шкода, що Ви не захотіли ввести ${promptText}.`);
+        }
+        return userInput;
+      }
+
+      function getMessage(message) {
+        if (message.trim().length !== 0) {
+          alert(message);
+        }
+      }
+    </script>
+  </body>
+</html>
