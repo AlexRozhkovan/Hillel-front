@@ -14,9 +14,10 @@
       for (let index = 0; index < btns.length; index++) {
         btns[index].addEventListener("click", function () {
           const url = this.getAttribute("url");
-          window.location.href = url.startsWith("https://") || url.startsWith('http://')
-            ? url
-            : `http://${url}`;
+          window.location.href =
+            url.startsWith("https://") || url.startsWith("http://")
+              ? url
+              : `http://${url}`;
         });
       }
     </script>

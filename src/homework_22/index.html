@@ -10,20 +10,18 @@
     <div id="main"></div>
     <script>
       const main = document.getElementById("main");
-const tableDiv = document.createElement("table");
-tableDiv.style.borderCollapse = 'collapse'; // Додаємо границю до всієї таблиці
+      const tableDiv = document.createElement("table");
+      tableDiv.style.borderCollapse = "collapse";
+      main.appendChild(tableDiv);
 
-main.appendChild(tableDiv);
-
-for (let i = 0; i < 10; i++) {
-  const row = tableDiv.insertRow(i);
-  for (let j = 0; j < 10; j++) {
-    const cell = row.insertCell(j);
-    cell.innerHTML = i * 10 + j + 1;
-    cell.style.border = '1px solid black'; // Додаємо границю до кожної комірки таблиці
-  }
-
-}
+      for (let i = 0; i < 10; i++) {
+        const row = tableDiv.insertRow(i);
+        for (let j = 0; j < 10; j++) {
+          const cell = row.insertCell(j);
+          cell.innerHTML = i * 10 + j + 1;
+          cell.style.border = "1px solid black";
+        }
+      }
     </script>
   </body>
 </html>
