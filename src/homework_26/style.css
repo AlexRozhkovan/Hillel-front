@@ -1,0 +1,28 @@
+.container {
+    position: relative;
+  }
+  
+  .img {
+    max-width: 100%;
+    max-height: 400px;
+    position: absolute;
+    left: 40%
+  }
+  
+  .btn {
+    position: absolute;
+    top: 50px;
+  }
+  
+  .btn-prev {
+    left: 35%;
+  }
+  
+  .btn-next {
+    right: 35%;
+  }
+  
+  .btn[disabled] {
+    display: none;
+  }
+  
