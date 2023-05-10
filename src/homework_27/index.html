@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const array = [1, [2, 3], 4, [5, 6, [7, 8]]];
+      const listElement = generateList(array);
+      console.log(listElement);
+
+      function generateList(array) {
+        const ul = document.createElement("ul");
+        for (let i = 0; i < array.length; i++) {
+          const elem = array[i];
+          const li = document.createElement("li");
+          if (Array.isArray(elem)) {
+            li.appendChild(generateList(elem));
+          } else {
+            const text = document.createTextNode(elem);
+            li.appendChild(text);
+          }
+          ul.appendChild(li);
+        }
+        return ul;
+      }
+    </script>
+  </body>
+</html>
