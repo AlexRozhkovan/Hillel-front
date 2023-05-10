@@ -13,6 +13,37 @@
       <div class="products"></div>
       <div class="details"></div>
     </div>
+    <div class="order" id="order">
+      <form class="order-form" id="order-form" style="display: none;">
+        <label for="name">ПІБ покупця:</label>
+        <input type="text" id="name" name="name" required />
+        <br />
+        <label for="city">Місто:</label>
+        <select id="city" name="city" required>
+          <option value="">Оберіть місто</option>
+          <option value="Київ">Київ</option>
+          <option value="Харків">Харків</option>
+          <option value="Львів">Львів</option>
+        </select>
+        <br />
+        <label for="np">Склад Нової пошти:</label>
+        <input type="text" id="np" name="np" required />
+        <br />
+        <label for="payment">Спосіб оплати:</label>
+        <select id="payment" name="payment" required>
+          <option value="Післяплата">Післяплата</option>
+          <option value="Банківська картка">Банківська картка</option>
+        </select>
+        <br />
+        <label for="quantity">Кількість:</label>
+        <input type="number" id="quantity" name="quantity" min="1" required />
+        <br />
+        <label for="comment">Коментар:</label>
+        <textarea id="comment" name="comment"></textarea>
+        <br />
+        <button id="orderSubmitBtn" type="submit">Підтвердити замовлення</button>
+      </form>
+    </div>
     <script src="data.js"></script>
     <script src="app.js"></script>
   </body>

@@ -45,14 +45,43 @@ function showDetailsHandler(event) {
 }
 
 function buyButtonHandler() {
-  alert("Товар успішно придбанний");
-  cleanData([productsContainer, detailsContainer]);
+  const order = document.getElementById("order-form");
+  order.style.display = "block";
+  order.addEventListener("submit", submitBtnHandler);
 }
 
-function cleanData(elements) {
-  elements.forEach((el) => {
-    el.innerHTML = "";
-  });
+function submitBtnHandler(event) {
+  event.preventDefault();
+  const productName = detailsContainer.childNodes[0].textContent;
+  const productPrice = detailsContainer.childNodes[1].textContent;
+  const name = document.getElementById("name").value;
+  const city = document.getElementById("city").value;
+  const np = document.getElementById("np").value;
+  const paymentType = document.getElementById("payment").value;
+  const quantity = document.getElementById("quantity").value;
+  const comment = document.getElementById("comment").value;
+
+  const table = document.createElement("table");
+  const data = {
+    "Товар": productName,
+    "Ціна": productPrice,
+    "ПІБ": name,
+    "Місто": city,
+    "Відділення НП": np,
+    "Вид оплати": paymentType,
+    "Кількість": quantity,
+    "Комментар": comment === null ? comment : "Нема",
+  };
+
+  for (const [key, value] of Object.entries(data)) {
+    const row = table.insertRow();
+    const cell1 = row.insertCell();
+    const cell2 = row.insertCell();
+    cell1.innerHTML = key;
+    cell2.innerHTML = value;
+  }
+
+  document.getElementById("order").appendChild(table);
 }
 
 showCategories();
