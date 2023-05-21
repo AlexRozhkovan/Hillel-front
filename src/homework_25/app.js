@@ -1,6 +1,51 @@
 const categoriesContainer = document.querySelector(".categories");
 const productsContainer = document.querySelector(".products");
 const detailsContainer = document.querySelector(".details");
+const orderContainer = document.querySelector(".order");
+const main = document.getElementById("backBtn");
+const orderForm = document.getElementById("order-form");
+const myOrders = document.getElementById("myOrders");
+
+main.addEventListener("click", showDefaultPage);
+myOrders.addEventListener("click", showMyOrders);
+
+function showDefaultPage() {
+  cleanData([categoriesContainer, productsContainer, detailsContainer]);
+  orderForm.style.display = "none";
+  showCategories();
+}
+
+function showMyOrders() {
+  cleanData([categoriesContainer, productsContainer, detailsContainer]);
+  orderContainer.style.display = "none";
+  let localData = JSON.parse(localStorage.getItem("orderList")) || [];
+  localData.forEach((ld, index) => {
+    const el = document.createElement("div");
+    el.textContent = `Дата: ${ld["Дата замовлення"]} || Ціна: ${ld["Ціна"]}$`;
+    el.addEventListener("click", function () {
+      showOrderDetails(ld, index);
+    });
+    categoriesContainer.appendChild(el);
+  });
+}
+
+function showOrderDetails(data, index) {
+  cleanData([productsContainer]);
+  Object.entries(data).forEach(([key, value]) => {
+    const listItem = document.createElement("li");
+    listItem.textContent = `${key}: ${value}`;
+    productsContainer.appendChild(listItem);
+  });
+  const deleteBtn = document.createElement("button");
+  deleteBtn.textContent = "Видалити замовлення";
+  productsContainer.appendChild(deleteBtn);
+  deleteBtn.addEventListener("click", function () {
+    const localData = JSON.parse(localStorage.getItem("orderList")) || [];
+    localData.splice(index, 1);
+    localStorage.setItem("orderList", JSON.stringify(localData));
+    showMyOrders();
+  });
+}
 
 function showCategories() {
   data.forEach((category, index) => {
@@ -14,8 +59,7 @@ function showCategories() {
 
 function showProductsHandler(event) {
   productsContainer.innerHTML = "";
-  const el = event.target;
-  const categoryIndex = el.dataset.category;
+  const categoryIndex = event.target.dataset.category;
   const categoryProducts = data[categoryIndex].products;
   categoryProducts.forEach((product, index) => {
     const el = document.createElement("div");
@@ -45,9 +89,9 @@ function showDetailsHandler(event) {
 }
 
 function buyButtonHandler() {
-  const order = document.getElementById("order-form");
-  order.style.display = "block";
-  order.addEventListener("submit", submitBtnHandler);
+  orderContainer.style.display = "block";
+  orderForm.style.display = "block";
+  orderForm.addEventListener("submit", submitBtnHandler);
 }
 
 function submitBtnHandler(event) {
@@ -61,17 +105,23 @@ function submitBtnHandler(event) {
   const quantity = document.getElementById("quantity").value;
   const comment = document.getElementById("comment").value;
 
+  let localData = JSON.parse(localStorage.getItem("orderList")) || [];
   const table = document.createElement("table");
+
   const data = {
-    "Товар": productName,
-    "Ціна": productPrice,
-    "ПІБ": name,
-    "Місто": city,
+    Товар: productName,
+    Ціна: productPrice,
+    ПІБ: name,
+    Місто: city,
     "Відділення НП": np,
     "Вид оплати": paymentType,
-    "Кількість": quantity,
-    "Комментар": comment === null ? comment : "Нема",
+    Кількість: quantity,
+    Комментар: comment === null ? comment : "Нема",
+    "Дата замовлення": new Date().toLocaleString("en-GB"),
   };
+
+  localData.push(data);
+  localStorage.setItem("orderList", JSON.stringify(localData));
 
   for (const [key, value] of Object.entries(data)) {
     const row = table.insertRow();
@@ -81,7 +131,14 @@ function submitBtnHandler(event) {
     cell2.innerHTML = value;
   }
 
-  document.getElementById("order").appendChild(table);
+  orderContainer.appendChild(table);
+  orderForm.style.display = "none";
+}
+
+function cleanData(elements) {
+  elements.forEach((el) => {
+    if (el != null) el.innerHTML = "";
+  });
 }
 
 showCategories();
