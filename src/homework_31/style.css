@@ -1,0 +1,26 @@
+.main {
+  display: flex;
+}
+.main > ul {
+  border: 1px solid black;
+  width: 30%;
+  min-height: 200px;
+}
+
+ul > input {
+  margin: 5px;
+}
+
+.form {
+  position: fixed;
+  left: 35%;
+  top: 25%;
+  background-color: #f1f1f1;
+  padding: 20px;
+  z-index: 9999;
+  border: 1px black;
+}
+
+.form > input:not([type="button"]) {
+  display: block;
+}
