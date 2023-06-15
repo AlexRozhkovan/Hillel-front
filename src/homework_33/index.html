@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Прогноз погоди</h1>
+      <div>
+        <label for="city-select">Вибір міста:</label>
+        <select id="city-select">
+          <option value="Kyiv">Київ</option>
+          <option value="Lviv">Львів</option>
+          <option value="Odesa">Одеса</option>
+          <option value="Kharkiv">Харків</option>
+          <option value="Dnipro">Дніпро</option>
+        </select>
+      </div>
+      <div>
+        <label for="date-select">Вибір дня:</label>
+        <select id="date-select"></select>
+      </div>
+      <div id="weather-info"></div>
+      <div id="weather-table"></div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
