@@ -3,7 +3,7 @@ const numberImages = {};
 function preloadImages() {
   for (let i = 0; i < 10; i++) {
     numberImages[i] = new Image();
-    numberImages[i].src = `numberImages/${i}.png`;
+    numberImages[i].src = `dist/images/${i}.png`;
   }
 }
 
